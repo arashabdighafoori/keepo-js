@@ -13,20 +13,6 @@ export class Encryption {
     this.iv = crypto.randomBytes(16);
   }
 
-  public encrypt(text: string) {
-    const cipher = crypto.createCipheriv(
-      this.algorithm,
-      Buffer.from(this.key),
-      this.iv
-    );
-    let encrypted = cipher.update(text);
-    encrypted = Buffer.concat([encrypted, cipher.final()]);
-    return {
-      iv: this.iv.toString("hex"),
-      encryptedData: encrypted.toString("hex"),
-    };
-  }
-
   public decrypt(context: EncryptionContext) {
     const iv = Buffer.from(context.iv, "hex");
     const encryptedText = Buffer.from(context.encryptedData, "hex");

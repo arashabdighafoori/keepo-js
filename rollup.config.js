@@ -2,7 +2,6 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import ts from "rollup-plugin-ts";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
-import copy from "rollup-plugin-copy";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -25,9 +24,10 @@ export default [
     "src/index.ts",
     [
       {
-        dir: "./bin/lib/",
+        dir: "./lib/",
         format: "cjs",
       },
     ],
+    []
   ),
 ];

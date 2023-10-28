@@ -2,9 +2,10 @@
   "name": "keepo",
   "version": "1.0.0",
   "description": "A convenient way to get secrets and use .keep files in node.js .",
-  "main": "./index.js",
-  "bin": {
-    "keepo": "./bin/keepo"
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
   },
   "engines": {
     "node": ">= 0.10"
