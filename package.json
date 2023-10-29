@@ -1,6 +1,6 @@
 {
   "name": "keepo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A convenient way to get secrets and use .keep files in node.js .",
   "main": "./lib/index.js",
   "module": "./lib/index.js",
@@ -19,11 +19,10 @@
     "build": "npx rollup --config rollup.config.js",
     "test": "npx jest",
     "test:coverage": "npm test -- --coverage",
-    "test:badges": "npm run test:coverage  && jest-coverage-badges"
+    "test:badges": "npm run test:coverage  && npx jest-coverage-badges"
   },
   "files": [
-    "bin",
-    "bin/lib"
+    "lib"
   ],
   "keywords": [],
   "author": "Arash ghafoori",

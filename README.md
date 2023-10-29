@@ -16,7 +16,7 @@
 [![coverage:branches][coverage:branches-image]](coverage)
 [![License][license-image]][license-url]
 
-[build-image]: https://img.shields.io/github/actions/workflow/status/arashabdighafoori/keepo-cli/jest.yml?label=build&branch=main
+[build-image]: https://img.shields.io/github/actions/workflow/status/arashabdighafoori/keepo-js/jest.yml?label=build&branch=main
 [coverage:functions-image]: ./coverage/badge-functions.svg
 [coverage:statements-image]: ./coverage/badge-statements.svg
 [coverage:lines-image]: ./coverage/badge-lines.svg
@@ -38,28 +38,50 @@
 
 ## Features
 
-- Manage secrets easily
-- Keep secrets encrypted and available only with keys
-- List required values
+- Decrypt and use .keep file
+- Use and manage user secrets easier
 
 <br />
 
 ## Installation
 
 ```
-npm install -g keepo-cli
+npm install keepo
 ```
 
 <br />
 
 ## Usage
 
-If you have a .keep file in the repo and you know the encryption key use `keepo init <your-encryption-key>` to initalize the directory. ( run the command in the directory with .keep file ).
+After installation Use the snippet blow the get a secret and manage errors:
 
-To keep a value use `keepo set <key> <value>`
-or use `keepo open` and edit the file in json format then save it.
+```ts
+import { get as keepo, constants } from "keepo";
 
-To see the value of a given key, you can both use `keepo open` and then discard the file or `keepo get <key>`.
+keepo<T>("<key>")
+  .then((value) => {
+    // do stuff
+  })
+  .catch((reason) => {
+    if (reason.startsWith("<key>")) {
+      // the key was not found
+    } else if (reason === constants.nokeeperror) {
+      // no .keep file - local or global - was found
+    }
+  });
+```
+
+or just:
+
+```ts
+import { get as keepo } from "keepo";
+
+async function my_async_function() {
+  const secret = await keepo<T>("key");
+  // do stuff
+}
+```
+
 <br />
 
 ## License
