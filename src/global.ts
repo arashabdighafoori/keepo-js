@@ -11,7 +11,10 @@ export async function checkGlobal<T>(file: File, key: string) {
       })
       .then((data: string) => {
         const content = JSON.parse(data);
-        resolve(content[key]);
+        if (key in content) resolve(content[key]);
+        else {
+          reject(404);
+        }
       })
       .catch(reject);
   });
