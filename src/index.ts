@@ -37,7 +37,7 @@ export function get<T>(key: string) {
     }
 
     if (!global.raw_exists() && !local.raw_exists()) {
-      reject(`no .keep was found.`);
+      reject(constants.nokeeperror);
     }
   });
 }

@@ -1,7 +1,7 @@
 import { tmpdir } from "os";
 
 export default class {
-  public static nokeeperror = `no .keep file was found found.`;
+  public static nokeeperror = `no .keep file was found.`;
   public static tmpdir = (() => {
     return tmpdir();
   })();
