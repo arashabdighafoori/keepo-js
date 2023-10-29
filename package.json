@@ -1,6 +1,6 @@
 {
   "name": "keepo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A convenient way to get secrets and use .keep files in node.js .",
   "main": "./lib/index.js",
   "module": "./lib/index.js",
